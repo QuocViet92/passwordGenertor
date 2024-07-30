@@ -12,10 +12,8 @@ const checkedNumber = document.getElementById('checkNumber').checked
 const checkedSymbols = document.getElementById('checkSymbols').checked
 let password1=''
 let password2= ''
-
 let passwordArr = []
     passwordArr.push(...characters)
-
 if(checkedNumber  && checkedSymbols){
 passwordArr.push(...number)
 passwordArr.push(...symbols)
@@ -26,19 +24,19 @@ passwordArr.push(...symbols)
         else if(checkedNumber && !checkedSymbols){
             passwordArr.push(...number)
         }
-console.log(passwordLength)
+
     for(let i = 0; i <passwordLength; i++){
         const numberRadom1 = Math.floor(Math.random()*passwordArr.length)
         const numberRadom2 = Math.floor(Math.random()*passwordArr.length)
         password1 +=passwordArr[numberRadom1]
         password2 +=passwordArr[numberRadom2]
-    
     }
     renderPassFist.textContent = password1
     renderPassSecond.textContent = password2   
     
 }
-function copyText(){
+
+function copyTextfirst(){
 
     navigator.clipboard.writeText(renderPassFist.innerText)
         .then(() => {
@@ -49,3 +47,37 @@ function copyText(){
         });
 
 }
+function copyTextsecond(){
+
+    navigator.clipboard.writeText(renderPassSecond.innerText)
+        .then(() => {
+            alert('Nội dung đã được sao chép thành công');
+        })
+        .catch((error) => {
+            console.error('Lỗi khi sao chép nội dung:', error);
+        });
+
+}
+
+const Mode = document.getElementById('darkMode')
+const container = document.getElementById('containerForm')
+const title = document.getElementById('textTitle')
+const textInput = document.getElementById('textInput')
+const textH2 = document.getElementById('textH2')
+
+document.getElementById('darkMode').addEventListener('change',()=>{
+    if(Mode.checked){
+        containerForm.style.background = "#ECFDF5";
+        title.style.color = '#111827';
+        textH2.style.color ='#D5D4D8';
+        textInput.textContent ='Dark Mode'
+        textInput.style.color = "black" 
+    }
+        else{
+            containerForm.style.background = "#1F2937";
+            title.style.color = "white";
+            textH2.style.color ='#6B7280';
+            textInput.textContent ='Light Mode'
+            textInput.style.color = "white"
+        }
+})
