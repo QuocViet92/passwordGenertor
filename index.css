@@ -150,7 +150,6 @@ input::-webkit-inner-spin-button {
 
   @media(max-width: 768px){
     body{
-      color: red;
       display: block;
     }
     .container{
